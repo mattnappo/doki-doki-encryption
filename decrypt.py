@@ -13,7 +13,7 @@ class Decrypt():
                 self.binary = self.binary + "1"
             elif pixel == (255, 255, 255):
                 self.binary = self.binary + "0"
-        self.export()
+        self.export(self.binary)
     def export(self, bits, encoding='utf-8', errors='surrogatepass'):
         n = int(bits, 2)
         print(n.to_bytes((n.bit_length() + 7) // 8, 'big').decode(encoding, errors) or '\0')

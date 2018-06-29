@@ -23,15 +23,10 @@ def encrypt():
             "static/img/" + file_name,
             "png"
         )
-        settings.init()
-        settings.test()
-        print(settings.globals[0])
         session['filename'] = file_name
         return render_template("encrypt.html", form=form)
     session['filename'] = ''
     return render_template("encrypt.html", form=form)
-
-
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
     app.run(debug=True)
