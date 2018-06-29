@@ -34,8 +34,10 @@ class Encrypt():
         except:
             print("Error saving file.")
 os.system("clear")
+"""
 Encrypt(
     input("Enter some plaintext: "),
     "converted",
     "png"
 )
+"""
