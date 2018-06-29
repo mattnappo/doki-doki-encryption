@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form action="" method="POST">
+    <div class="form-group">
+      {{ render_field(form.text, class_="form-control") }}
+      <button type="submut" name="button" class="btn btn-primary">Encrypt</button>
+    </div>
+  </form>
+{% endblock %}
