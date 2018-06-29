@@ -1,11 +1,12 @@
 from flask import Flask, render_template, flash, request, redirect, url_for, session, send_from_directory, logging
-UPLOAD_FOLDER = 'uploads/'
+UPLOAD_FOLDER = 'static/uploads/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'txt'])
 app = Flask(__name__, static_url_path='/static')
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators, FileField
 from werkzeug.utils import secure_filename
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-import random, os
+import random, os, cleaner
+# cleaner.clean("STATIC")
 from encrypt import Encrypt
 from decrypt import Decrypt
 class EncryptForm(Form):
@@ -32,7 +33,6 @@ def encrypt():
 def allowed_file(filename):
     return '.' in filename and \
             filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 @app.route('/decrypt', methods=['GET', 'POST'])
 def upload_file():
     session['filename'] = ""
@@ -51,7 +51,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             PATH = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(PATH)
-            session['filename'] = PATH
+            session['filename'] = filename
             text = ""
             with open(Decrypt(PATH).NAME, "r") as f:
                 text = f.read()
@@ -64,8 +64,6 @@ def upload_file():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
-
-
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
-    app.run(debug=True)
+    app.run(host= '0.0.0.0', debug=True)

@@ -2,6 +2,7 @@
 
 {% block body %}
   {% from "includes/_formhelpers.html" import render_field %}
+  <h1 class="text-center">Encrypt</h1>
   <div class="container">
     <form action="" method="POST">
       <div class="form-group">
@@ -16,9 +17,9 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Generated Image:</h5>
-        <img src="{{ url_for('static', filename='img/' + session['filename']+'.png') }}" />
+        <img src="{{ url_for('static', filename='encrypted/' + session['filename']+'.png') }}" />
         <p class="card-text" style="margin-top:1%">If you did not input a lot of text, the image will be very small. If it is too small to see, click the download button.</p>
-        <a href="/static/img/{{ session['filename'] + '.png' }}" class="btn btn-primary">Download</a>
+        <a href="static/encrypted/{{ session['filename'] + '.png' }}" target="_blank" class="btn btn-primary">Download</a>
       </div>
     </div>
   </div>
