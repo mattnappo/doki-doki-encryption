@@ -7,10 +7,8 @@
       <div class="card-body">
         <h5 class="card-title">Upload Image</h5>
         <form method=post enctype=multipart/form-data action="">
-          <input type=file id="choose_file" name=file><br><br>
-          {% if session['filename']!="" %}
-            <button class="btn btn-primary" type="submit">Decrypt</button>
-          {% endif %}
+          <input type=file id="choose_file" name=file><hr>
+          <button class="btn btn-primary" type="submit">Decrypt</button>
         </form>
         {% if session['filename']!="" %}
           <p class="card-text" style="margin-top:1%">Image:</p>
