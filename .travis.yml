@@ -2,5 +2,5 @@ language: python
 python: "3.6"
 install: pip install -r requirements.txt
 script:
-  - python encrypt.py
-  - python decrypt.py
+  - python app/encrypt.py
+  - python app/decrypt.py
