@@ -6,7 +6,7 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators,
 from werkzeug.utils import secure_filename
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 import random, os, cleaner
-# cleaner.clean("static")
+cleaner.clean("static")
 from encrypt import Encrypt
 from decrypt import Decrypt
 class EncryptForm(Form):
@@ -38,7 +38,7 @@ def upload_file():
     session['filename'] = ""
     if request.method == 'POST':
         # check if the post request has the file part
-        if 'file' not in request.files:
+        if 'file' not in request.files :
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
