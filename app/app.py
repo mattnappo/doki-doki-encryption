@@ -6,7 +6,7 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators,
 from werkzeug.utils import secure_filename
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 import random, os, cleaner
-cleaner.clean("static")
+# cleaner.clean("static")
 from encrypt import Encrypt
 from decrypt import Decrypt
 class EncryptForm(Form):
